@@ -1,8 +1,8 @@
-import 'package:dinalipi/pages/addTask.dart';
+import 'package:dinalipi/presentation/screens/dinacharya/addTask.dart';
 import 'package:flutter/material.dart';
 
-class Dinacharya extends StatelessWidget {
-  const Dinacharya({Key? key}) : super(key: key);
+class DinacharyaScreen extends StatelessWidget {
+  const DinacharyaScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,6 @@ class Dinacharya extends StatelessWidget {
         child: Align(
           alignment: Alignment.bottomCenter,
           child: ElevatedButton(
-            
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
               child: Text(
@@ -32,5 +31,3 @@ class Dinacharya extends StatelessWidget {
     );
   }
 }
-
-

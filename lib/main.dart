@@ -7,9 +7,9 @@
 // amber. The `_onItemTapped` function changes the selected item's index
 // and displays a corresponding message in the center of the [Scaffold].
 
-import 'package:dinalipi/screens/dinacharya.dart';
-import 'package:dinalipi/screens/dinalipi.dart';
-import 'package:dinalipi/screens/report.dart';
+import 'package:dinalipi/presentation/screens/dinacharya/dinacharya_screen.dart';
+import 'package:dinalipi/presentation/screens/dinalipi/dinalipi_screen.dart';
+import 'package:dinalipi/presentation/screens/report/report_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -62,9 +62,9 @@ class _HomeWidgetState extends State<HomeWidget> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Dinacharya(),
-    Dinalipi(),
-    Report(),
+    DinacharyaScreen(),
+    DinalipiScreen(),
+    ReportScreen(),
   ];
 
   void _onItemTapped(int index) {

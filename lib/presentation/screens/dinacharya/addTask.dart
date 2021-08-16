@@ -8,17 +8,17 @@ class AddTaskPage extends StatefulWidget {
 }
 
 class _AddTaskPageState extends State<AddTaskPage> {
-  TimeOfDay time = TimeOfDay.now();
-  TimeOfDay times = TimeOfDay.now();
+  TimeOfDay startTime = TimeOfDay.now();
+  TimeOfDay endTime = TimeOfDay.now();
 
   void selectStartTime() async {
     final TimeOfDay? newTime = await showTimePicker(
       context: context,
-      initialTime: time,
+      initialTime: startTime,
     );
     if (newTime != null) {
       setState(() {
-        time = newTime;
+        startTime = newTime;
       });
     }
   }
@@ -26,11 +26,11 @@ class _AddTaskPageState extends State<AddTaskPage> {
   void selectEndTime() async {
     final TimeOfDay? newTime = await showTimePicker(
       context: context,
-      initialTime: times,
+      initialTime: endTime,
     );
     if (newTime != null) {
       setState(() {
-        times = newTime;
+        endTime = newTime;
       });
     }
   }
@@ -61,11 +61,11 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     decoration: InputDecoration(
                       labelText: 'ADD TASK ',
                       labelStyle: TextStyle(
-                          fontSize: 22.0,
+                          fontSize: 12.0,
                           color: Colors.black,
                           fontWeight: FontWeight.bold),
                       hintText: 'Enter Your Task Here',
-                      hintStyle: TextStyle(fontSize: 16.0),
+                      hintStyle: TextStyle(fontSize: 12.0),
                       border: OutlineInputBorder(),
                     ),
                     keyboardType: TextInputType.text,
@@ -81,7 +81,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     child: Icon(Icons.av_timer),
                     onPressed: selectStartTime,
                   ),
-                  Text(' ${time.format(context)}')
+                  Text(' ${startTime.format(context)}')
                 ],
               ),
               Row(
@@ -92,7 +92,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     child: Icon(Icons.av_timer),
                     onPressed: selectEndTime,
                   ),
-                  Text(' ${times.format(context)}')
+                  Text(' ${endTime.format(context)}')
                 ],
               )
             ],

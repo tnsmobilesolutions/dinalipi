@@ -25,7 +25,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static const String _title = 'Dinalipi';
+  static const String _title = 'Dinalipi ';
 
   @override
   Widget build(BuildContext context) {

@@ -12,6 +12,7 @@ import 'package:dinalipi/presentation/screens/dinalipi/dinalipi_screen.dart';
 import 'package:dinalipi/presentation/screens/report/report_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner:
           false, // This removes the debug banner in app in debug mode
       title: _title,
@@ -61,7 +62,7 @@ class HomeWidget extends StatefulWidget {
 class _HomeWidgetState extends State<HomeWidget> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = <Widget>[
+  static  List<Widget> _widgetOptions = <Widget>[
     DinacharyaScreen(),
     DinalipiScreen(),
     ReportScreen(),

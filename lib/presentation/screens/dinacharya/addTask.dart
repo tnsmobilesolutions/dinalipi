@@ -1,4 +1,6 @@
+import 'package:dinalipi/data/model/task.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AddTaskPage extends StatefulWidget {
   AddTaskPage({Key? key}) : super(key: key);
@@ -8,17 +10,21 @@ class AddTaskPage extends StatefulWidget {
 }
 
 class _AddTaskPageState extends State<AddTaskPage> {
-  TimeOfDay startTime = TimeOfDay.now();
-  TimeOfDay endTime = TimeOfDay.now();
+  TextEditingController _taskNameEditingController = TextEditingController();
+  TimeOfDay _startTimeTOD = TimeOfDay.now();
+  TimeOfDay _endTimeTOD =
+      TimeOfDay(hour: TimeOfDay.now().hour + 1, minute: TimeOfDay.now().minute);
+
+  final Task data = Get.find();
 
   void selectStartTime() async {
     final TimeOfDay? newTime = await showTimePicker(
       context: context,
-      initialTime: startTime,
+      initialTime: TimeOfDay.now(),
     );
     if (newTime != null) {
       setState(() {
-        startTime = newTime;
+        _startTimeTOD = newTime;
       });
     }
   }
@@ -26,14 +32,20 @@ class _AddTaskPageState extends State<AddTaskPage> {
   void selectEndTime() async {
     final TimeOfDay? newTime = await showTimePicker(
       context: context,
-      initialTime: endTime,
+      initialTime: _endTimeTOD,
     );
     if (newTime != null) {
       setState(() {
-        endTime = newTime;
+        _endTimeTOD = newTime;
       });
     }
   }
+
+  // @override
+  // void dispose() {
+  //   _taskName.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -43,21 +55,10 @@ class _AddTaskPageState extends State<AddTaskPage> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text('Cancel')),
-                  ElevatedButton(onPressed: () {}, child: Text('Add')),
-                ],
-              ),
-              SizedBox(height: 40.0),
               Column(
                 children: [
                   TextField(
+                    controller: _taskNameEditingController,
                     decoration: InputDecoration(
                       labelText: 'ADD TASK ',
                       labelStyle: TextStyle(
@@ -81,7 +82,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     child: Icon(Icons.av_timer),
                     onPressed: selectStartTime,
                   ),
-                  Text(' ${startTime.format(context)}')
+                  Text(' ${_startTimeTOD.format(context)}')
                 ],
               ),
               Row(
@@ -92,9 +93,33 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     child: Icon(Icons.av_timer),
                     onPressed: selectEndTime,
                   ),
-                  Text(' ${endTime.format(context)}')
+                  Text(' ${_endTimeTOD.format(context)}')
                 ],
-              )
+              ),
+              SizedBox(height: 80.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ElevatedButton(
+                      onPressed: () {
+                        Get.back();
+                      },
+                      child: Text('Cancel')),
+                  ElevatedButton(
+                      onPressed: () {
+                        print(
+                            '$_taskNameEditingController.task, $_startTimeTOD , $_endTimeTOD');
+
+                        data.addDinacharyaTask(
+                            _taskNameEditingController.text,
+                            _startTimeTOD.format(context),
+                            _endTimeTOD.format(context));
+
+                        Get.back();
+                      },
+                      child: Text('Add')),
+                ],
+              ),
             ],
           ),
         ),

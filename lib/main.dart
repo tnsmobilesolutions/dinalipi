@@ -7,6 +7,9 @@
 // amber. The `_onItemTapped` function changes the selected item's index
 // and displays a corresponding message in the center of the [Scaffold].
 
+// ignore_for_file: deprecated_member_use
+
+import 'package:dinalipi/data/model/utility.dart';
 import 'package:dinalipi/presentation/screens/dinacharya/dinacharya_screen.dart';
 import 'package:dinalipi/presentation/screens/dinalipi/dinalipi_screen.dart';
 import 'package:dinalipi/presentation/screens/report/report_screen.dart';
@@ -16,8 +19,8 @@ import 'package:get/get.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    systemNavigationBarColor: Color(0xFF4E4DA8), // navigation bar color
-    statusBarColor: Color(0xFFF6F5FC), // status bar color
+    systemNavigationBarColor: Dcolor.systemNavBarColor, // navigation bar color
+    statusBarColor: Dcolor.statusBarColor, // status bar color
   ));
   return runApp(const MyApp());
 }
@@ -35,15 +38,15 @@ class MyApp extends StatelessWidget {
           false, // This removes the debug banner in app in debug mode
       title: _title,
       theme: ThemeData(
-        primaryColor: Color(0xFF9699D1),
-        primaryColorDark: Color(0xFF4E4DA8),
-        primaryColorLight: Color(0xFFF6F5FC),
-        accentColor: Color(0xFFF2B0B5),
-        selectedRowColor: Color(0xFFED868C),
-        buttonColor: Color(0xFF4E4DA8),
-        backgroundColor: Color(0xFFFFFFFF),
-        disabledColor: Color(0xFFCCCCE8),
-        scaffoldBackgroundColor: Color(0xFFF6F5FC),
+        primaryColor:Dcolor.primaryColor,
+        primaryColorDark: Dcolor.primaryColorDark,
+        primaryColorLight:Dcolor.primaryColorLight,
+        accentColor: Dcolor.accentColor,
+        selectedRowColor:Dcolor.selectedRowColor,
+        backgroundColor: Dcolor.backgroundColor,
+        disabledColor: Dcolor.disabledColor,
+        scaffoldBackgroundColor: Dcolor.scaffoldBackgroundColor,
+        // boxDecorationColor:Dcolor.boxDecorationColor,
       ),
       home: HomeWidget(),
     );

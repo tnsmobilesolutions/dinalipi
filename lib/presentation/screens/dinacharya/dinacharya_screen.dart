@@ -19,10 +19,10 @@ class _DinacharyaScreenState extends State<DinacharyaScreen> {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 5),
             child: Row(
               children: [
                 Obx(() => Text('Task Name: ${data.taskName.value}')),
@@ -62,6 +62,10 @@ class _DinacharyaScreenState extends State<DinacharyaScreen> {
                   onPressed: () {
                     Get.to(() => AddTaskPage());
                   },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Color(0xff9598D1),
+                  ),
                 ),
               ],
             ),

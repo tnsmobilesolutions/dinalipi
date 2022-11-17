@@ -1,4 +1,5 @@
 import 'package:dinalipi/data/model/task.dart';
+import 'package:dinalipi/data/model/utility.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -67,7 +68,9 @@ class _AddTaskPageState extends State<AddTaskPage> {
                           fontWeight: FontWeight.bold),
                       hintText: 'Enter Your Task Here',
                       hintStyle: TextStyle(fontSize: 12.0),
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(
+                         borderSide: BorderSide(color:Color.fromARGB(255, 160, 11, 11)),
+                      ),
                     ),
                     keyboardType: TextInputType.text,
                   ),
@@ -79,7 +82,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 children: [
                   Text('Start Time'),
                   TextButton(
-                    child: Icon(Icons.av_timer),
+                    child: Icon(Icons.hourglass_bottom),
                     onPressed: selectStartTime,
                   ),
                   Text(' ${_startTimeTOD.format(context)}')
@@ -90,7 +93,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 children: [
                   Text('End Time'),
                   TextButton(
-                    child: Icon(Icons.av_timer),
+                    child: Icon(Icons.hourglass_bottom),
                     onPressed: selectEndTime,
                   ),
                   Text(' ${_endTimeTOD.format(context)}')

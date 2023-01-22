@@ -1,21 +1,15 @@
 import 'package:dinalipi/data/model/utility.dart';
-import 'package:dinalipi/presentation/screens/dinalipi/dinalipi_addtask_appbar.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 
 class DinalipiAddTask extends StatelessWidget {
-   DinalipiAddTask({Key? key}) : super(key: key);
-  
+  DinalipiAddTask({Key? key}) : super(key: key);
+
   final List<String> items = [
-  'YES/NO',
-  'YES/NO/Custom msg',
-  'Time Pcker',
-  'Duration Picker',
-  
-];
+    'YES/NO',
+    'YES/NO/Custom msg',
+    'Time Pcker',
+    'Duration Picker',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -65,11 +59,11 @@ class DinalipiAddTask extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.all(2),
-        
         child: Column(
-          
           children: [
-            SizedBox(height: 40,),
+            SizedBox(
+              height: 40,
+            ),
             Row(
               // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -78,7 +72,7 @@ class DinalipiAddTask extends StatelessWidget {
                   width: 50,
                 ),
 //                TextField(
-              
+
 //   decoration: InputDecoration(
 //     labelText: 'Your Task',
 //     border: OutlineInputBorder(
@@ -86,62 +80,59 @@ class DinalipiAddTask extends StatelessWidget {
 //     ),
 //   ),
 // ),
-SizedBox(height: 40,)
-
+                SizedBox(
+                  height: 40,
+                )
               ],
             ),
             Row(
-               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-               children: [
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
                 Text('Type'),
                 SizedBox(
                   width: 150,
                 ),
-               DropdownButton(
-              value: 4,
-              hint: Align(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  "Select Item Type",
-                  style: TextStyle(color: Colors.grey),
-                ),
-              ),
-              items: [
-                DropdownMenuItem(
-                  child: Text("YES/NO"),
-                  value: 1,
-                ),
-                DropdownMenuItem(
-                  child: Text("YES/NO/Custom Msg"),
-                  
-                  value: 2,
-                ),
-                DropdownMenuItem(
-                  child: Text("Time Picker"),
-                  value: 3
-                ),
-                DropdownMenuItem(
-                    child: Text("Duration Pcker"),
-                    value: 4
+                DropdownButton(
+                  value: 4,
+                  hint: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      "Select Item Type",
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                  items: [
+                    DropdownMenuItem(
+                      child: Text("YES/NO"),
+                      value: 1,
+                    ),
+                    DropdownMenuItem(
+                      child: Text("YES/NO/Custom Msg"),
+                      value: 2,
+                    ),
+                    DropdownMenuItem(child: Text("Time Picker"), value: 3),
+                    DropdownMenuItem(child: Text("Duration Pcker"), value: 4)
+                  ],
+                  onChanged: (Object? value) {},
                 )
-              ], onChanged: (Object? value) {  },
-            )],
+              ],
             ),
-            SizedBox(height: 20,),
-             Row(
+            SizedBox(
+              height: 20,
+            ),
+            Row(
               children: [
                 Text('Default Value'),
-                SizedBox(
-                  width: 150 ),
-                 TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Enter a search term',
-            ),
-          ),
+                SizedBox(width: 150),
+                // TextField(
+                //   decoration: InputDecoration(
+                //     border: OutlineInputBorder(),
+                //     hintText: 'Enter a search term',
+                //   ),
+                // ),
               ],
-             )
-        ],
+            )
+          ],
         ),
       ),
     );

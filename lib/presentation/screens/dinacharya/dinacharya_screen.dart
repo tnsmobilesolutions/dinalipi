@@ -1,8 +1,6 @@
 import 'package:avatar_glow/avatar_glow.dart';
-import 'package:dinalipi/data/model/task.dart';
 import 'package:dinalipi/presentation/screens/dinacharya/addTask.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class DinacharyaScreen extends StatefulWidget {
@@ -13,8 +11,6 @@ class DinacharyaScreen extends StatefulWidget {
 }
 
 class _DinacharyaScreenState extends State<DinacharyaScreen> {
-  final Task data = Get.put(Task());
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,11 +26,11 @@ class _DinacharyaScreenState extends State<DinacharyaScreen> {
             ),
             child: Row(
               children: [
-                Obx(() => Text('Task Name: ${data.taskName.value}')),
+                Text('Task Name: '),
                 SizedBox(width: 15),
-                Obx(() => Text('Start Time: ${data.startTime.value}')),
+                Text('Start Time: '),
                 SizedBox(width: 15),
-                Obx(() => Text('End Time: ${data.endTime.value}')),
+                Text('End Time: '),
               ],
             ),
           ),
@@ -272,7 +268,7 @@ class _DinacharyaScreenState extends State<DinacharyaScreen> {
                         TextStyle(fontSize: 24.0, fontWeight: FontWeight.w700),
                   ),
                   onPressed: () {
-                    Get.to(() => AddTaskPage());
+                    AddTaskPage();
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,

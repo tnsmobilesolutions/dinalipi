@@ -1,7 +1,4 @@
-import 'package:dinalipi/data/model/task.dart';
-import 'package:dinalipi/data/model/utility.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class AddTaskPage extends StatefulWidget {
   AddTaskPage({Key? key}) : super(key: key);
@@ -15,8 +12,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
   TimeOfDay _startTimeTOD = TimeOfDay.now();
   TimeOfDay _endTimeTOD =
       TimeOfDay(hour: TimeOfDay.now().hour + 1, minute: TimeOfDay.now().minute);
-
-  final Task data = Get.find();
 
   void selectStartTime() async {
     final TimeOfDay? newTime = await showTimePicker(
@@ -69,7 +64,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
                       hintText: 'Enter Your Task Here',
                       hintStyle: TextStyle(fontSize: 12.0),
                       border: OutlineInputBorder(
-                         borderSide: BorderSide(color:Color.fromARGB(255, 160, 11, 11)),
+                        borderSide:
+                            BorderSide(color: Color.fromARGB(255, 160, 11, 11)),
                       ),
                     ),
                     keyboardType: TextInputType.text,
@@ -103,24 +99,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ElevatedButton(
-                      onPressed: () {
-                        Get.back();
-                      },
-                      child: Text('Cancel')),
-                  ElevatedButton(
-                      onPressed: () {
-                        print(
-                            '$_taskNameEditingController.task, $_startTimeTOD , $_endTimeTOD');
-
-                        data.addDinacharyaTask(
-                            _taskNameEditingController.text,
-                            _startTimeTOD.format(context),
-                            _endTimeTOD.format(context));
-
-                        Get.back();
-                      },
-                      child: Text('Add')),
+                  ElevatedButton(onPressed: () {}, child: Text('Cancel')),
+                  ElevatedButton(onPressed: () {}, child: Text('Add')),
                 ],
               ),
             ],

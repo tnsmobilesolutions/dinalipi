@@ -1,5 +1,5 @@
-import 'package:dinalipi/data/model/dinacharya.dart';
-import 'package:dinalipi/data/model/dinalipiModel.dart';
+import 'package:dinalipi/data/model/dinacharya_Model.dart';
+import 'package:dinalipi/data/model/dinalipi_Model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -51,7 +51,7 @@ class DataBaseHelper {
     ''');
   }
 
-  //insert a file in database
+  //insert a Dinacharjya file in database
   Future<Dinacharjya> create(Dinacharjya dinacharjya) async {
     final db = await instance.database;
     final id = await db.insert(dinacharjyaTable, dinacharjya.toJson());
@@ -62,7 +62,7 @@ class DataBaseHelper {
     );
   }
 
-  // read single file
+  // read a single Dinacharjya file
   Future<Dinacharjya> readDinacharjya(int id) async {
     final db = await instance.database;
     final maps = await db.query(
@@ -79,7 +79,7 @@ class DataBaseHelper {
     }
   }
 
-  //read multiple files
+  //read multiple Dinacharjya files
   Future<List<Dinacharjya>> readAllDinacharjya() async {
     final db = await instance.database;
     final result = await db.query(dinacharjyaTable);
@@ -87,7 +87,7 @@ class DataBaseHelper {
     return result.map(((json) => Dinacharjya.fromJson(json))).toList();
   }
 
-  //update a file
+  //update a Dinacharjya file
   Future<int> update(Dinacharjya task) async {
     final db = await instance.database;
 
@@ -99,13 +99,72 @@ class DataBaseHelper {
     );
   }
 
-  //delete a file
+  //delete a Dinacharjya file
   Future<int> delete(int id) async {
     final db = await instance.database;
 
     return db.delete(
       dinacharjyaTable,
       where: '${DinacharjyaFields.id} = ?',
+      whereArgs: [id],
+    );
+  }
+
+  //insert a Dinalipi file in database
+  Future<Dinalipi> createDinalipi(Dinalipi dinalipi) async {
+    final db = await instance.database;
+    final id = await db.insert(dinalipiTable, dinalipi.toJson());
+
+    return dinalipi.copy(
+      id: id.toString(),
+      taskName: dinalipi.taskName,
+    );
+  }
+
+  // read a single Dinalipi file
+  Future<Dinalipi> readDinalipi(int id) async {
+    final db = await instance.database;
+    final maps = await db.query(
+      dinalipiTable,
+      columns: DinalipiFields.values,
+      where: '${DinalipiFields.id} = ?',
+      whereArgs: [id],
+    );
+
+    if (maps.isNotEmpty) {
+      return Dinalipi.fromJson(maps.first);
+    } else {
+      throw Exception('ID $id is not found');
+    }
+  }
+
+  //read multiple Dinalipi files
+  Future<List<Dinalipi>> readAllDinalipi() async {
+    final db = await instance.database;
+    final result = await db.query(dinalipiTable);
+
+    return result.map(((json) => Dinalipi.fromJson(json))).toList();
+  }
+
+  //update a Dinalipi file
+  Future<int> updateDinalipi(Dinalipi task) async {
+    final db = await instance.database;
+
+    return db.update(
+      dinalipiTable,
+      task.toJson(),
+      where: '${DinalipiFields.id} = ?',
+      whereArgs: [task.id],
+    );
+  }
+
+  //delete a Dinalipi file
+  Future<int> deleteDinalipi(int id) async {
+    final db = await instance.database;
+
+    return db.delete(
+      dinalipiTable,
+      where: '${DinalipiFields.id} = ?',
       whereArgs: [id],
     );
   }

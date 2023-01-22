@@ -1,9 +1,9 @@
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:dinalipi/data/model/task.dart';
 import 'package:dinalipi/presentation/screens/dinacharya/addTask.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'package:timelines/timelines.dart';
+import 'package:timeline_tile/timeline_tile.dart';
 
 class DinacharyaScreen extends StatefulWidget {
   const DinacharyaScreen({Key? key}) : super(key: key);
@@ -19,10 +19,15 @@ class _DinacharyaScreenState extends State<DinacharyaScreen> {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          SizedBox(
+            height: 60,
+          ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 5),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 10,
+            ),
             child: Row(
               children: [
                 Obx(() => Text('Task Name: ${data.taskName.value}')),
@@ -34,7 +39,217 @@ class _DinacharyaScreenState extends State<DinacharyaScreen> {
             ),
           ),
           Divider(),
-
+          TimelineTile(
+            indicatorStyle: IndicatorStyle(
+              indicator: AvatarGlow(
+                endRadius: 90,
+                glowColor: Colors.blue,
+                duration: Duration(milliseconds: 2000),
+                repeat: true,
+                showTwoGlows: true,
+                repeatPauseDuration: Duration(milliseconds: 100),
+                child: Icon(
+                  Icons.circle_rounded,
+                  color: Colors.blue,
+                  size: 10,
+                ),
+              ),
+              padding: EdgeInsets.all(5),
+            ),
+            beforeLineStyle: LineStyle(color: Colors.blue, thickness: 1.5),
+            isFirst: true,
+            endChild: SizedBox(
+              height: 80,
+              width: 100,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(Icons.lock_clock),
+                    SizedBox(width: 15),
+                    Text(
+                      '04:00',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          TimelineTile(
+            indicatorStyle: IndicatorStyle(
+              indicator: AvatarGlow(
+                endRadius: 90,
+                glowColor: Colors.blue,
+                duration: Duration(milliseconds: 2000),
+                repeat: true,
+                showTwoGlows: true,
+                repeatPauseDuration: Duration(milliseconds: 100),
+                child: Icon(
+                  Icons.circle_rounded,
+                  color: Colors.blue,
+                  size: 10,
+                ),
+              ),
+              padding: EdgeInsets.all(5),
+            ),
+            beforeLineStyle: LineStyle(color: Colors.blue, thickness: 1.5),
+            isFirst: false,
+            endChild: SizedBox(
+              height: 80,
+              width: 100,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(Icons.lock_clock),
+                    SizedBox(width: 15),
+                    Text(
+                      '04:30',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          TimelineTile(
+            indicatorStyle: IndicatorStyle(
+              indicator: AvatarGlow(
+                endRadius: 90,
+                glowColor: Colors.blue,
+                duration: Duration(milliseconds: 2000),
+                repeat: true,
+                showTwoGlows: true,
+                repeatPauseDuration: Duration(milliseconds: 100),
+                child: Icon(
+                  Icons.circle_rounded,
+                  color: Colors.blue,
+                  size: 10,
+                ),
+              ),
+              padding: EdgeInsets.all(5),
+            ),
+            beforeLineStyle: LineStyle(color: Colors.blue, thickness: 1.5),
+            isFirst: false,
+            endChild: SizedBox(
+              height: 80,
+              width: 100,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(Icons.lock_clock),
+                    SizedBox(width: 15),
+                    Text(
+                      '05:00',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          TimelineTile(
+            indicatorStyle: IndicatorStyle(
+              indicator: AvatarGlow(
+                endRadius: 90,
+                glowColor: Colors.blue,
+                duration: Duration(milliseconds: 2000),
+                repeat: true,
+                showTwoGlows: true,
+                repeatPauseDuration: Duration(milliseconds: 100),
+                child: Icon(
+                  Icons.circle_rounded,
+                  color: Colors.blue,
+                  size: 10,
+                ),
+              ),
+              padding: EdgeInsets.all(5),
+            ),
+            beforeLineStyle: LineStyle(color: Colors.blue, thickness: 1.5),
+            isFirst: false,
+            endChild: SizedBox(
+              height: 80,
+              width: 100,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(Icons.lock_clock),
+                    SizedBox(width: 15),
+                    Text(
+                      '05:30',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          TimelineTile(
+            indicatorStyle: IndicatorStyle(
+              indicator: AvatarGlow(
+                endRadius: 90,
+                glowColor: Colors.blue,
+                duration: Duration(milliseconds: 2000),
+                repeat: true,
+                showTwoGlows: true,
+                repeatPauseDuration: Duration(milliseconds: 100),
+                child: Icon(
+                  Icons.circle_rounded,
+                  color: Colors.blue,
+                  size: 10,
+                ),
+              ),
+              padding: EdgeInsets.all(5),
+            ),
+            beforeLineStyle: LineStyle(color: Colors.blue, thickness: 1.5),
+            isFirst: false,
+            isLast: true,
+            endChild: SizedBox(
+              height: 80,
+              width: 100,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(Icons.lock_clock),
+                    SizedBox(width: 15),
+                    Text(
+                      '06:00',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
           // Timeline.tileBuilder(
           //   builder: TimelineTileBuilder.fromStyle(
           //     contentsAlign: ContentsAlign.alternating,
@@ -45,19 +260,16 @@ class _DinacharyaScreenState extends State<DinacharyaScreen> {
           //     itemCount: 10,
           //   ),
           // ),
+          SizedBox(height: 50),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
             child: Column(
               children: [
                 ElevatedButton(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 30),
-                    child: Text(
-                      "ADD TASK",
-                      style: TextStyle(
-                          fontSize: 24.0, fontWeight: FontWeight.w700),
-                    ),
+                  child: Text(
+                    "ADD TASK",
+                    style:
+                        TextStyle(fontSize: 24.0, fontWeight: FontWeight.w700),
                   ),
                   onPressed: () {
                     Get.to(() => AddTaskPage());

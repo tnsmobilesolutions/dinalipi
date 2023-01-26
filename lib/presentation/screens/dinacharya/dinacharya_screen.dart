@@ -75,13 +75,14 @@ class _DinacharyaScreenState extends State<DinacharyaScreen> {
           endRadius: 90,
           child: Icon(
             Icons.circle_rounded,
-            color: Colors.blue,
+            color: Color.fromARGB(255, 104, 103, 103),
             size: 15,
           ),
         ),
         padding: EdgeInsets.all(5),
       ),
-      beforeLineStyle: LineStyle(color: Colors.blue, thickness: 1.5),
+      beforeLineStyle:
+          LineStyle(color: Color.fromARGB(255, 104, 103, 103), thickness: 1.5),
       isFirst: false,
       startChild: Padding(
         padding: const EdgeInsets.only(left: 70),
@@ -93,7 +94,7 @@ class _DinacharyaScreenState extends State<DinacharyaScreen> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 15,
-                color: Colors.blue,
+                color: Colors.black,
               ),
             ),
           ],
@@ -112,7 +113,7 @@ class _DinacharyaScreenState extends State<DinacharyaScreen> {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 15,
-                  color: Colors.blue,
+                  color: Colors.black,
                 ),
               ),
             ],
@@ -130,13 +131,14 @@ class _DinacharyaScreenState extends State<DinacharyaScreen> {
           endRadius: 90,
           child: Icon(
             Icons.circle_rounded,
-            color: Colors.blue,
+            color: Color.fromARGB(255, 104, 103, 103),
             size: 15,
           ),
         ),
         padding: EdgeInsets.all(5),
       ),
-      beforeLineStyle: LineStyle(color: Colors.blue, thickness: 1.5),
+      beforeLineStyle:
+          LineStyle(color: Color.fromARGB(255, 104, 103, 103), thickness: 1.5),
       isFirst: false,
       startChild: Padding(
         padding: const EdgeInsets.only(left: 70),
@@ -148,7 +150,7 @@ class _DinacharyaScreenState extends State<DinacharyaScreen> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 15,
-                color: Colors.blue,
+                color: Colors.black,
               ),
             ),
           ],
@@ -167,7 +169,7 @@ class _DinacharyaScreenState extends State<DinacharyaScreen> {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 15,
-                  color: Colors.blue,
+                  color: Colors.black,
                 ),
               ),
             ],

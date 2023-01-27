@@ -62,9 +62,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
         backgroundColor: Color.fromARGB(255, 247, 237, 222),
         title: Text(
           'Add Task',
-          style: TextStyle(
-            color: Colors.black,
-          ),
+          style: TextStyle(color: Colors.black, fontSize: 20),
         ),
         leading: IconButton(
             onPressed: () {
@@ -134,7 +132,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     ],
                   ),
                 ),
-
                 SizedBox(height: 10),
                 TextFormField(
                   style: Theme.of(context).textTheme.bodyText1,
@@ -214,60 +211,13 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     labelText: 'Task End Time',
                   ),
                 ),
-                SizedBox(height: 30),
-                ElevatedButton(onPressed: () {}, child: Text('Add Task')),
-                // Column(
-                //   children: [
-                //     TextField(
-                //       controller: _taskNameEditingController,
-                //       decoration: InputDecoration(
-                //         labelText: 'ADD TASK ',
-                //         labelStyle: TextStyle(
-                //             fontSize: 12.0,
-                //             color: Colors.black,
-                //             fontWeight: FontWeight.bold),
-                //         hintText: 'Enter Your Task Here',
-                //         hintStyle: TextStyle(fontSize: 12.0),
-                //         border: OutlineInputBorder(
-                //           borderSide:
-                //               BorderSide(color: Color.fromARGB(255, 160, 11, 11)),
-                //         ),
-                //       ),
-                //       keyboardType: TextInputType.text,
-                //     ),
-                //   ],
-                // ),
-                // SizedBox(height: 20.0),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //   children: [
-                //     Text('Start Time'),
-                //     TextButton(
-                //       child: Icon(Icons.hourglass_bottom),
-                //       onPressed: selectStartTime,
-                //     ),
-                //     Text(' ${_startTimeTOD.format(context)}')
-                //   ],
-                // ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //   children: [
-                //     Text('End Time'),
-                //     TextButton(
-                //       child: Icon(Icons.hourglass_bottom),
-                //       onPressed: selectEndTime,
-                //     ),
-                //     Text(' ${_endTimeTOD.format(context)}')
-                //   ],
-                // ),
-                // SizedBox(height: 80.0),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     ElevatedButton(onPressed: () {}, child: Text('Cancel')),
-                //     ElevatedButton(onPressed: () {}, child: Text('Add')),
-                //   ],
-                // ),
+                SizedBox(height: 50),
+                ElevatedButton(
+                    onPressed: () {},
+                    child: Text(
+                      'Add Task',
+                      style: TextStyle(fontSize: 20),
+                    )),
               ],
             ),
           ),

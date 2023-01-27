@@ -1,5 +1,6 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:dinalipi/presentation/screens/dinacharya/addTask.dart';
+import 'package:dinalipi/presentation/screens/dinacharya/custom_calender.dart';
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
@@ -11,6 +12,7 @@ class DinacharyaScreen extends StatefulWidget {
 }
 
 class _DinacharyaScreenState extends State<DinacharyaScreen> {
+  DateTime selectedDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,17 +49,27 @@ class _DinacharyaScreenState extends State<DinacharyaScreen> {
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              CustomCalendar(
+                onDateTimeChanged: (value) {
+                  setState(() {
+                    selectedDate = value;
+                    print(selectedDate);
+                  });
+                },
+              ),
+              SizedBox(height: 10),
               timelineTile('04:30 AM', 'Wake Up'),
-              timeline2('05:30 AM', 'Meditation'),
+              //timeline2('05:30 AM', 'Meditation'),
               timelineTile('06:30 AM', 'Morning Puja'),
-              timeline2('07:30 AM', 'Breakfast'),
+              //timeline2('07:30 AM', 'Breakfast'),
               timelineTile('08:30 AM', 'Office Work'),
-              timeline2('07:00 PM', 'Evening Puja'),
+              //timeline2('07:00 PM', 'Evening Puja'),
               timelineTile('08:00 PM', 'Meditation'),
-              timeline2('09:00 PM', 'Cook'),
+              //timeline2('09:00 PM', 'Cook'),
               timelineTile('10:00 PM', 'Dinner'),
-              timeline2('10:30 PM', 'Swadhyaya'),
+              //timeline2('10:30 PM', 'Swadhyaya'),
               timelineTile('11:00 PM', 'Sleep'),
             ],
           ),
@@ -126,31 +138,45 @@ class _DinacharyaScreenState extends State<DinacharyaScreen> {
   TimelineTile timelineTile(String text1, String text2) {
     return TimelineTile(
       alignment: TimelineAlign.center,
+
       indicatorStyle: IndicatorStyle(
-        indicator: AvatarGlow(
-          endRadius: 90,
-          child: Icon(
-            Icons.circle_rounded,
-            color: Color.fromARGB(255, 104, 103, 103),
-            size: 15,
-          ),
-        ),
-        padding: EdgeInsets.all(5),
-      ),
+          width: 13,
+          indicator: Container(
+            decoration: BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+                border: Border.all(
+                    width: 5, color: Color.fromARGB(255, 94, 94, 94))),
+          )),
+      // indicatorStyle: IndicatorStyle(
+      //   indicator: AvatarGlow(
+      //     endRadius: 90,
+      //     child: Icon(
+      //       Icons.circle_rounded,
+      //       color: Color.fromARGB(255, 104, 103, 103),
+      //       size: 15,
+      //     ),
+      //   ),
+      //   padding: EdgeInsets.all(5),
+      // ),
+      // afterLineStyle: LineStyle(
+      //   thickness: 2,
+      //   color: Colors.blue,
+      // ),
       beforeLineStyle:
           LineStyle(color: Color.fromARGB(255, 104, 103, 103), thickness: 1.5),
       isFirst: false,
       startChild: Padding(
         padding: const EdgeInsets.only(left: 70),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               text1,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 15,
-                color: Colors.black,
+                color: Color.fromARGB(255, 105, 104, 104),
               ),
             ),
           ],
@@ -169,7 +195,7 @@ class _DinacharyaScreenState extends State<DinacharyaScreen> {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 15,
-                  color: Colors.black,
+                  color: Color.fromARGB(255, 105, 105, 105),
                 ),
               ),
             ],

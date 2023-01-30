@@ -65,9 +65,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
         backgroundColor: Color.fromARGB(255, 247, 237, 222),
         title: Text(
           'Add Task',
-          style: TextStyle(
-            color: Colors.black,
-          ),
+          style: TextStyle(color: Colors.black, fontSize: 20),
         ),
         leading: IconButton(
             onPressed: () {
@@ -137,7 +135,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     ],
                   ),
                 ),
-
                 SizedBox(height: 10),
                 TextFormField(
                   style: Theme.of(context).textTheme.bodyText1,

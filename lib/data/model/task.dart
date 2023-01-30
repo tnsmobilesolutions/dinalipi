@@ -12,7 +12,7 @@ enum TaskType {
 
 class Task {
   String taskName;
-  TaskType taskType = TaskType.boolean;
+  TaskType taskType;
   DateTime? taskDate;
   DateTime? taskStartTime;
   DateTime? taskEndTime;
@@ -24,6 +24,7 @@ class Task {
   String? durationValue;
   String? otherValue;
   Task({
+    required this.taskType,
     required this.taskName,
     this.taskDate,
     this.taskStartTime,
@@ -51,6 +52,7 @@ class Task {
     String? otherValue,
   }) {
     return Task(
+      taskType: taskType,
       taskName: taskName ?? this.taskName,
       taskDate: taskDate ?? this.taskDate,
       taskStartTime: taskStartTime ?? this.taskStartTime,
@@ -67,6 +69,7 @@ class Task {
 
   Map<String, dynamic> toMap() {
     return {
+      'taskType': taskType,
       'taskName': taskName,
       'taskDate': taskDate?.millisecondsSinceEpoch,
       'taskStartTime': taskStartTime?.millisecondsSinceEpoch,
@@ -83,6 +86,7 @@ class Task {
 
   factory Task.fromMap(Map<String, dynamic> map) {
     return Task(
+      taskType: map['taskType'],
       taskName: map['taskName'] ?? '',
       taskDate: map['taskDate'] != null
           ? DateTime.fromMillisecondsSinceEpoch(map['taskDate'])
@@ -122,6 +126,7 @@ class Task {
     String? otherValue,
   }) =>
       Task(
+        taskType: taskType,
         taskName: taskName,
         taskDate: taskDate,
         boolValue: boolValue,

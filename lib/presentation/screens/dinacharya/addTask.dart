@@ -1,3 +1,6 @@
+import 'package:dinalipi/DataBase/database_helper.dart';
+import 'package:dinalipi/data/model/dinacharya_Model.dart';
+import 'package:dinalipi/data/model/task.dart';
 import 'package:flutter/material.dart';
 
 class AddTaskPage extends StatefulWidget {
@@ -215,7 +218,21 @@ class _AddTaskPageState extends State<AddTaskPage> {
                   ),
                 ),
                 SizedBox(height: 30),
-                ElevatedButton(onPressed: () {}, child: Text('Add Task')),
+                ElevatedButton(
+                    onPressed: () async {
+                      final note = Dinacharjya(
+                        taskName: 'walk',
+                        taskType: TaskType.string,
+                        id: 'abvci39b3qtg9c7tgq3',
+                        taskStartTime: DateTime.now(),
+                        taskEndTime: DateTime.now(),
+                        tasks: [],
+                      );
+
+                      await DataBaseHelper.instance.createDinacharjya(note);
+                      print('Dinacharjya: $note');
+                    },
+                    child: Text('Add Task')),
                 // Column(
                 //   children: [
                 //     TextField(

@@ -1,29 +1,29 @@
 import 'package:dinalipi/data/model/dinacharya_Model.dart';
 import 'package:dinalipi/data/model/dinalipi_Model.dart';
 import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:sqflite/sqflite.dart' as sql;
 
 class DataBaseHelper {
   static final DataBaseHelper instance = DataBaseHelper._init();
-  static Database? _database;
+  static sql.Database? _database;
   DataBaseHelper._init();
 
-  Future<Database> get database async {
+  Future<sql.Database> get database async {
     if (_database != null) return _database!;
 
-    _database = await _initDB('notes.db');
+    _database = await _initDB('Dinalipi.db');
     return _database!;
   }
 
-  Future<Database> _initDB(String filePath) async {
-    final dbPath = await getDatabasesPath();
+  Future<sql.Database> _initDB(String filePath) async {
+    final dbPath = await sql.getDatabasesPath();
     final path = join(dbPath, filePath);
 
-    return await openDatabase(path, version: 1, onCreate: _createDB);
+    return await sql.openDatabase(path, version: 1, onCreate: _createDB);
   }
 
   //create database table
-  Future _createDB(Database db, int version) async {
+  Future _createDB(sql.Database db, int version) async {
     final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     final textType = 'TEXT NOT NULL';
 
@@ -34,7 +34,7 @@ class DataBaseHelper {
       ${DinacharjyaFields.taskName} $textType,
       ${DinacharjyaFields.taskStartTime} $textType,
       ${DinacharjyaFields.taskEndTime} $textType,
-      ${DinacharjyaFields.taskType} $textType,
+      ${DinacharjyaFields.taskType} $textType
       )
     ''');
 
@@ -46,15 +46,28 @@ class DataBaseHelper {
       ${DinalipiFields.taskStartTime} $textType,
       ${DinalipiFields.taskEndTime} $textType,
       ${DinalipiFields.taskType} $textType,
-      ${DinalipiFields.date} $textType,    
+      ${DinalipiFields.date} $textType
       )
     ''');
   }
 
   //insert a Dinacharjya file in database
-  Future<Dinacharjya> create(Dinacharjya dinacharjya) async {
+  Future<Dinacharjya> createDinacharjya(Dinacharjya dinacharjya) async {
     final db = await instance.database;
+    final data = {
+      'id': dinacharjya.id as String,
+      'taskName': dinacharjya.taskName,
+      'taskType': dinacharjya.taskType,
+      'taskStartTime': dinacharjya.taskStartTime?.toIso8601String() as String,
+      'taskEndTime': dinacharjya.taskEndTime?.toIso8601String() as String
+    };
     final id = await db.insert(dinacharjyaTable, dinacharjya.toJson());
+
+    // final id = await db.insert(
+    //   dinacharjyaTable,
+    //   data,
+    //   conflictAlgorithm: sql.ConflictAlgorithm.replace,
+    // );
 
     return dinacharjya.copy(
       id: id.toString(),
@@ -88,19 +101,19 @@ class DataBaseHelper {
   }
 
   //update a Dinacharjya file
-  Future<int> update(Dinacharjya task) async {
+  Future<int> updateDinacharjya(Dinacharjya task) async {
     final db = await instance.database;
 
     return db.update(
       dinacharjyaTable,
-      task.toJson(),
+      task.toJson() as Map<String, Object>,
       where: '${DinacharjyaFields.id} = ?',
       whereArgs: [task.id],
     );
   }
 
   //delete a Dinacharjya file
-  Future<int> delete(int id) async {
+  Future<int> deleteDinacharjya(int id) async {
     final db = await instance.database;
 
     return db.delete(
